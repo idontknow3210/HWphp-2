@@ -2,21 +2,36 @@
 $a = 1; // 1, 'one', true, 3.14, null, []
 switch(true) {
     case is_bool($a):
-        echo "bool";
+        echo "bool\n";
         break;
     case is_float($a):
-        echo "float";
+        echo "float\n";
         break;
     case is_int($a):
-        echo "int";
+        echo "int\n";
         break;
     case is_string($a):
-        echo "string";
+        echo "string\n";
         break;
     case is_null($a):
-        echo "null";
+        echo "null\n";
         break;
     default: 
-        echo "other";
+        echo "other\n";
+}
+
+
+if(is_bool($a)) {
+    echo "bool";
+} elseif (is_float($a)) {
+    echo "float";
+} elseif (is_int($a)) {
+    echo "int";
+} elseif (is_string($a)) {
+    echo "string";
+} elseif (is_null($a)) {
+    echo "null";
+} else {
+    echo "other";
 }
 ?>
