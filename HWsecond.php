@@ -1,37 +1,32 @@
 <?php
-$a = 1; // 1, 'one', true, 3.14, null, []
-switch(true) {
-    case is_bool($a):
-        echo "bool\n";
-        break;
-    case is_float($a):
-        echo "float\n";
-        break;
-    case is_int($a):
-        echo "int\n";
-        break;
-    case is_string($a):
-        echo "string\n";
-        break;
-    case is_null($a):
-        echo "null\n";
-        break;
-    default: 
-        echo "other\n";
+
+$anyName = "иванов иван иванович";
+
+$fullname =  mb_convert_case($anyName, MB_CASE_TITLE, "UTF-8");
+$arr = mb_str_split($fullname);
+$initials = [];
+$surnameArr = [];
+
+foreach ($arr as $el) {
+    if(($el!==" ") && (mb_strtoupper($el)===$el)) {
+        array_push($initials, $el);   
+    } 
 }
 
-
-if(is_bool($a)) {
-    echo "bool";
-} elseif (is_float($a)) {
-    echo "float";
-} elseif (is_int($a)) {
-    echo "int";
-} elseif (is_string($a)) {
-    echo "string";
-} elseif (is_null($a)) {
-    echo "null";
-} else {
-    echo "other";
+foreach ($arr as $surname) {
+    if($surname!==" ") {
+        array_push($surnameArr, $surname);
+    } else {
+        break;
+    }
 }
+
+$fullName = "Полное имя: $fullname";
+$fio = "Аббревиатура: " . implode($initials);
+$surnameAndInitials = "Фамилия и инициалы: " . implode($surnameArr) . " " . $initials[1] . "." . $initials[2] . ".";
+
+echo $fullName . "\n";
+echo $fio . "\n";
+echo $surnameAndInitials;
+
 ?>
