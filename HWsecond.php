@@ -40,8 +40,8 @@ $surnameAndInitials = "Фамилия и инициалы: " . implode($surnameA
 
 echo "Данные обработаны!\n";
 
-fwrite(STDERR, "$fullName\n");
-fwrite(STDERR, "$fio\n");
-fwrite(STDERR, $surnameAndInitials);
+fwrite(STDOUT, "$fullName\n");
+fwrite(STDOUT, "$fio\n");
+fwrite(STDOUT, $surnameAndInitials);
 
 ?>
