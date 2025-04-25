@@ -1,6 +1,19 @@
 <?php
+// PHP-8.3
+// У меня не работает fgets(STDIN) c Кириллицой.
 
-$anyName = "иванов иван иванович";
+echo "Введите вашу фамилию!\n";
+$lastName = trim(fgets(STDIN));
+
+echo "Введите ваше имя!\n";
+$firstName = trim(fgets(STDIN));
+
+echo "Введите ваше отчество!\n";
+$patronymic = trim(fgets(STDIN));
+
+$anyName = "$lastName $firstName $patronymic";
+
+// $anyName = "иванов иван иванович"; -- Этой переменной я проверил, что методы работают с Кириллицой.
 
 $fullname =  mb_convert_case($anyName, MB_CASE_TITLE, "UTF-8");
 $arr = mb_str_split($fullname);
@@ -25,8 +38,10 @@ $fullName = "Полное имя: $fullname";
 $fio = "Аббревиатура: " . implode($initials);
 $surnameAndInitials = "Фамилия и инициалы: " . implode($surnameArr) . " " . $initials[1] . "." . $initials[2] . ".";
 
-echo $fullName . "\n";
-echo $fio . "\n";
-echo $surnameAndInitials;
+echo "Данные обработаны!\n";
+
+fwrite(STDERR, "$fullName\n");
+fwrite(STDERR, "$fio\n");
+fwrite(STDERR, $surnameAndInitials);
 
 ?>
